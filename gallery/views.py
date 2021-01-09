@@ -27,4 +27,7 @@ def convert_dates(dates):
 
 def past_days_image(request,past_date):
         # Converts data from the string Url
-        
+        date = dt.datetime.strptime(past_date,'%Y-%m-%d').date()
+
+    day = convert_dates(date)
+    
