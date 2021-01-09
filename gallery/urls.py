@@ -3,4 +3,5 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls)
+    url('^today/$',views.image_of_day,name='newsToday')
 ]
