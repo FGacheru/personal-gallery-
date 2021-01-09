@@ -24,3 +24,7 @@ def convert_dates(dates):
     # Returning the actual day of the week
     day = days[day_number]
     return day
+
+def past_days_image(request,past_date):
+        # Converts data from the string Url
+        
