@@ -3,6 +3,9 @@ from . import views
 
 
 urlpatterns = [
-    url('^today/$',views.home,name='today'),
-    # url(r'^archives/(\d{4}-\d{2}-\d{2})/$',views.past_days_image,name = 'Image')
+    url('',views.home,name='today'),
+    url('about/', views.about, name='about'),
+    url('search/', views.search_results, name='search_results'),
+    url('image/<int:image_id>', views.view_image,name='view_image'),
+    url('category/<int:id>', views.category,name='category')
 ]

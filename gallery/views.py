@@ -63,3 +63,9 @@ def category(request, id):
         "images":images
     }
     return render(request, 'all-images/home.html', context)
+
+def about(request):
+    '''
+    Method to return about template
+    '''
+    return render(request, 'all-images/about.html')
