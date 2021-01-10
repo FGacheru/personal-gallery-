@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http  import HttpResponse,Http404
 import datetime as dt
+from .models import Image,Location,Category
 
 # Create your views here.
 def image_of_day(request):
