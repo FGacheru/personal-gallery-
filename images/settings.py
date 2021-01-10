@@ -25,21 +25,21 @@ SECRET_KEY = '8faq3qpgqml#%j(al0f!!+70d!h*rkno4saqhh-a!2o)oqyzqw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    
     'bootstrap3',  
-    'gallery.apps.GalleryConfig',
+    # 'gallery.apps.GalleryConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'gallery',
 ]
 
 MIDDLEWARE = [

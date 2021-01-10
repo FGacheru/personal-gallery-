@@ -37,6 +37,14 @@ class Image(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=30)
     
+    @classmethod
+    def get_all_categories(cls):
+        '''
+        Method to get all categories
+        '''
+        categories = cls.objects.all()
+        return categories
+    
     def save_category(self):
         self.save()
         
@@ -52,6 +60,14 @@ class Category(models.Model):
     
 class Location(models.Model):
     name = models.CharField(max_length=30)
+    
+    @classmethod
+    def get_all_locations(cls):
+        '''
+        Method to get all locations
+        '''
+        locations = cls.objects.all()
+        return locations
     
     def save_location(self):
         self.save()

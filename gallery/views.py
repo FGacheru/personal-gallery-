@@ -4,42 +4,62 @@ import datetime as dt
 from .models import Image,Location,Category
 
 # Create your views here.
-def image_of_day(request):
-    day = convert_dates(date)
-    html = f'''
-        <html>
-            <body>
-                <h1> {date.day}-{date.month}-{date.year}</h1>
-            </body>
-        </html>
-            '''
-    return HttpResponse(html)
+def welcome(request):
+    return HttpResponse('Welcome to my Gallery')
 
-def convert_dates(dates):
+def home(request):
+    '''
+    Method to return all images, locations, categories
+    '''
+    images = Image.objects.all()
+    location = Location.objects.all()
+    categories = Category.get_all_categories()
+    context = {
+        "images":images,
+        "location":location,
+        "categories": categories,
+    }
+    
+    return render(request, 'all-images/home.html', context)
 
-    # Function that gets the weekday number for the date.
-    day_number = dt.date.weekday(dates)
+def search_results(request):
+    '''
+    Method to search by location or category
+    '''
+    if 'result' in request.GET and request.GET["result"]:
+        search_term = request.GET.get("result")
+        searched_images = Picture.search_by_category(search_term)
+       
+        message = f"{search_term}"
+        return render(request, 'photo/search.html', {"message":message, "images":searched_images})
+    elif 'result' in request.GET and request.GET["result"]:
+        search_term = request.GET.get("result")
+        searched_images = Picture.search_by_location(search_term)
+        message = f"{search_term}"    
 
-    days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday',"Sunday"]
+        return render(request, 'all-images/search.html', {"message":message, "images":searched_images})
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'all-images/search.html', {"message":message})
 
-    # Returning the actual day of the week
-    day = days[day_number]
-    return day
-
-def past_days_image(request,past_date):
-        # Converts data from the string Url
-        date = dt.datetime.strptime(past_date,'%Y-%m-%d').date()
-        
-    except ValueError:
-        # Raise 404 error when ValueError is thrown
+def view_image(request,image_id):
+    '''
+    Method to get image by id
+    '''
+    try:
+        image = Image.objects.get(id =  image_id)
+    except DoesNotExist:
         raise Http404()
+    return render(request, "all-images/view.html", {"image":image})
 
-    day = convert_dates(date)
-    html = f'''
-        <html>
-            <body>
-                <h1>News for {day} {date.day}-{date.month}-{date.year}</h1>
-            </body>
-        </html>
-            '''
-    return HttpResponse(html)
+def category(request, id):
+    '''
+    Method to search by images or category
+    '''
+    # categories = Category.get_all_categories()
+    images = Image.objects.filter(category__id=id)
+    context = {
+        "categories":categories,
+        "images":images
+    }
+    return render(request, 'all-images/home.html', context)
