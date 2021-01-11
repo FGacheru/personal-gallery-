@@ -1,0 +1,99 @@
+h1{
+    /* font-family: 'Merienda One', cursive; */
+    color: white;
+}
+body{
+    background-image: url('https://assets.londonist.com/uploads/2020/03/i875/jennifer_steinkamp__blind_eye__1__2018__at_among_the_trees__hayward_gallery__2020-_-_jennifer_steinkamp_2020-_courtesy_of_hayward_gallery-_photo_linda_nylind.jpg');
+    overflow-x: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+p{
+    font-family: 'Tangerine', cursive;
+    font-size: 3rem;
+}
+
+
+.thumbnails img:hover{
+    opacity: 1;
+}
+
+.thumbnails:hover img{
+   
+    opacity: .6;
+    /* transform: scale(.92) */
+    -webkit-filter: sepia(0);
+    filter: sepia(0);
+}
+/* .thumbnails img{
+    transition: all .6s ease-in;
+} */
+
+
+.tooltiptext {
+    visibility: hidden;
+    width: 140px;
+    /* background-color: #555; */
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -75px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+   .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    /* border-color: #555 transparent transparent transparent; */
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .footer{
+      display: flex;
+      justify-content: space-around
+      
+  }
+
+.icons{
+    display: flex;
+    justify-content: space-between
+}
+
+#about{
+    border-left-style: double;
+    border-left-color: red;
+    border-left-width: thick;
+    background-image: url('https://assets.londonist.com/uploads/2020/03/i875/jennifer_steinkamp__blind_eye__1__2018__at_among_the_trees__hayward_gallery__2020-_-_jennifer_steinkamp_2020-_courtesy_of_hayward_gallery-_photo_linda_nylind.jpg');
+    overflow-x: hidden;
+    background-repeat: no-repeat;
+    background-size: cover
+}
+
+#more,li{
+    color: white;
+    list-style-type: none;
+}
+
+#more li {
+    font-size: 2rem;
+}
+
+#more p {
+    font-size: 4rem;
+}

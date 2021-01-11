@@ -1,12 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http  import HttpResponse,Http404
 import datetime as dt
 from .models import Image,Location,Category
 
-# Create your views here.
-def welcome(request):
-    return HttpResponse('Welcome to my Gallery')
 
+# Create your views here.
 def home(request):
     '''
     Method to return all images, locations, categories
@@ -28,10 +26,10 @@ def search_results(request):
     '''
     if 'result' in request.GET and request.GET["result"]:
         search_term = request.GET.get("result")
-        searched_images = Picture.search_by_category(search_term)
+        searched_images = Image.search_by_category(search_term)
        
         message = f"{search_term}"
-        return render(request, 'photo/search.html', {"message":message, "images":searched_images})
+        return render(request, 'all-images/search.html', {"message":message, "images":searched_images})
     elif 'result' in request.GET and request.GET["result"]:
         search_term = request.GET.get("result")
         searched_images = Picture.search_by_location(search_term)

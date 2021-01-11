@@ -1,7 +1,6 @@
 from django.db import models
 import datetime as dt
 
-# Create your models here.
 class Image(models.Model):
     title = models.CharField(max_length =30)
     image = models.ImageField(upload_to = 'images/', default="")
@@ -35,8 +34,8 @@ class Image(models.Model):
         return result
 
 class Category(models.Model):
-    name = models.CharField(max_length=30)
-    
+    category = models.CharField(max_length =30)
+
     @classmethod
     def get_all_categories(cls):
         '''
@@ -44,23 +43,25 @@ class Category(models.Model):
         '''
         categories = cls.objects.all()
         return categories
-    
+
     def save_category(self):
+        '''
+        Method to save category
+        '''
         self.save()
-        
-    def delete_category(self):
-        self.delete()
-        
+
     @classmethod
-    def update_category(cls, id, value):
-        cls.objects.filter(id=id).update(name = value)
-        
+    def delete_category(cls,category):
+        cls.objects.filter(category=category).delete()
+
+    
     def __str__(self):
-        return self.name 
-    
+        return self.category
+
+
 class Location(models.Model):
-    name = models.CharField(max_length=30)
-    
+    location = models.CharField(max_length =30)
+
     @classmethod
     def get_all_locations(cls):
         '''
@@ -68,17 +69,17 @@ class Location(models.Model):
         '''
         locations = cls.objects.all()
         return locations
-    
+
     def save_location(self):
+        '''
+        Method to save location
+        '''
         self.save()
-        
-    def delete_location(self):
-        self.delete()
-        
+
     @classmethod
-    def update_location(cls, id, value):
-        cls.objects.filter(id=id).update(name = value)
-        
-    def __str__(self):
-        return self.name 
+    def delete_location(cls,location):
+        cls.objects.filter(location=location).delete()
+
     
+    def __str__(self):
+        return self.location
